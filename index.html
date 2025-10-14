@@ -4,164 +4,464 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AndresPVF - Roblox Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="particles" id="particles"></div>
+  
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">AndresPVF</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#stats">Stats</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-burger" id="navBurger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
 
-  <!-- Intro -->
-  <section class="screen" id="intro">
-    <div class="centered">
-      <h1 class="fade-in">Hi, I'm <span class="highlight">AndresPVF</span></h1>
-      <p class="typewriter" id="typewriter">Print("Roblox Scripter & Animator")</p>
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="hero-greeting">Hello, I'm</span>
+        <span class="hero-name">AndresPVF</span>
+      </h1>
+      <div class="hero-subtitle">
+        <span class="typing-text" id="typingText"></span>
+        <span class="cursor">|</span>
+      </div>
+      <p class="hero-description">
+        Crafting immersive Roblox experiences through advanced scripting and cinematic animations
+      </p>
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+      <div class="hero-scroll">
+        <span>Scroll Down</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-card card-1">
+        <div class="card-icon">⚡</div>
+        <div class="card-text">Fast Scripts</div>
+      </div>
+      <div class="floating-card card-2">
+        <div class="card-icon">🎬</div>
+        <div class="card-text">Cinematic</div>
+      </div>
+     
+  </section>
+
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Who I Am</span>
+        <h2 class="section-title">About Me</h2>
+        <p class="section-description">
+          Passionate Roblox developer specializing in creating engaging gameplay mechanics
+        </p>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-card reveal-element">
+          <div class="about-card-icon">💻</div>
+          <h3>Scripting Expert</h3>
+          <p>Building robust systems with clean, modular code architecture</p>
+        </div>
+        <div class="about-card reveal-element">
+          <div class="about-card-icon">🎭</div>
+          <h3>Animator</h3>
+          <p>Bringing characters to life with dynamic animations</p>
+        </div>
+        <div class="about-card reveal-element">
+          <div class="about-card-icon">🔧</div>
+          <h3>Problem Solver</h3>
+          <p>Optimizing performance and fixing complex bugs</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section class="screen" id="about">
-    <div class="centered fade-in">
-      <h2>About Me</h2>
-      <p>I'm a developer who builds gameplay systems and interactive features for Roblox experiences.</p>
+    <section class="tech-stack" id="tech-stack">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Tech Stack</span>
+          <h2 class="section-title">Tools & Platforms</h2>
+          <p class="section-description">These are the main technologies I use to build and animate Roblox experiences.</p>
+        </div>
+        <div class="stack-grid">
+          <div class="stack-card reveal-element">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Luau_Logo_%28Programming_Language%29.svg" alt="Luau" class="stack-icon" />
+            <span>Luau</span>
+          </div>
+          <div class="stack-card reveal-element">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg" alt="Blender" class="stack-icon" />
+            <span>Blender</span>
+          </div>
+          <div class="stack-card reveal-element">
+            <img src="https://pngimg.com/uploads/discord/discord_PNG3.png" alt="Discord" class="stack-icon" />
+            <span>Discord</span>
+          </div>
+          <div class="stack-card reveal-element">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" alt="VS Code" class="stack-icon" />
+            <span>VS Code</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="section-header">
+          <span class="section-tag">My Achievements</span>
+          <h2 class="section-title">Stats & Milestones</h2>
+          <p class="section-description">Some numbers that showcase my experience and dedication as a Roblox developer.</p>
+        </div>
+      <div class="stats-grid">
+        <div class="stat-card reveal-element">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-number" data-target="15">0</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card reveal-element">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="stat-card reveal-element">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-number" data-target="80000">0</div>
+          <div class="stat-label">Lines of Code</div>
+        </div>
+        <div class="stat-card reveal-element">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-number" data-target="4">0</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Work Section -->
-  <!-- ...inicio del documento igual... -->
-
-  <!-- Work Section -->
-  <section class="screen" id="work">
-    <div class="centered fade-in">
-
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="scripting">Scripting</button>
-        <button class="tab-btn" data-tab="animation">Animation</button>
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">My Projects</span>
+        <h2 class="section-title">Portfolio</h2>
+        <p class="section-description">Explore my recent Roblox development work</p>
       </div>
 
-      <!-- Scripting Tab -->
-      <div class="tab-content active" id="scripting">
-        <h3>Scripting</h3>
+      <div class="portfolio-tabs">
+        <button class="portfolio-tab active" data-category="all">All Projects</button>
+        <button class="portfolio-tab" data-category="scripting">Scripting</button>
+        <button class="portfolio-tab" data-category="animation">Animation</button>
+      </div>
 
-        <div class="two-cols">
-          <div>
-            <h4>What I Can Do</h4>
-            <ul>
-              <li>Modular server-client architectures using remotes and bindables</li>
-              <li>Data persistence systems using DataStore with version control</li>
-              <li>GUI animations and interactive UI logic</li>
-              <li>Simulator Systems</li>
-              <li>Combat System</li>
-              <li>Discord integrations via secure webhook protocols</li>
-              <li>Extensible framework design for game scalability</li>
-            </ul>
+      <div class="portfolio-content">
+        <div class="category-section active" data-category="all">
+          <div class="skills-grid">
+            <div class="skill-card reveal-element">
+              <h4>What I Can Do</h4>
+              <ul class="skill-list">
+                <li>Server-Client Architecture</li>
+                <li>DataStore Systems</li>
+                <li>GUI Animations</li>
+                <li>Combat Systems</li>
+                <li>Simulator Systems</li>
+                <li>Discord Integration</li>
+                <li>Cutscenes & Cinematics</li>
+                <li>Rig Animations</li>
+              </ul>
+            </div>
+            <div class="skill-card decline reveal-element">
+              <h4>What I Don't Do</h4>
+              <ul class="skill-list">
+                <li>Vehicle Systems</li>
+                <li>Weapon Systems</li>
+                <li>Custom Rig Animations</li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <h4>What I Don't Do</h4>
-            <ul>
-              <li>Vehicle systems</li>
-              <li>Weapon systems</li>
-            </ul>
+
+          <div class="projects-showcase">
+            <div class="project-item reveal-element" data-category="scripting">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/VqFoyENk_cQ?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Scripting</span>
+                <h3>Skill System</h3>
+                <p>Advanced skill scripting with visual effects</p>
+              </div>
+            </div>
+
+            <div class="project-item reveal-element" data-category="scripting">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/RoZt_0fe7ZQ?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Scripting</span>
+                <h3>Menu & Store System</h3>
+                <p>Complete menu scripting with inventory management</p>
+              </div>
+            </div>
+
+            <div class="project-item reveal-element" data-category="scripting">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/ZWLWcXi4Vfc?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Scripting</span>
+                <h3>Combat System</h3>
+                <p>Full-featured combat mechanics</p>
+              </div>
+            </div>
+
+            <div class="project-item reveal-element" data-category="scripting">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/ELPhTGJIBig?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Scripting</span>
+                <h3>Natural Disasters</h3>
+                <p>Dynamic disaster system with real-time events</p>
+              </div>
+            </div>
+
+            <div class="project-item reveal-element" data-category="animation">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/66AJYpNXmq4?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Animation</span>
+                <h3>Fight Cutscene</h3>
+                <p>Cinematic combat sequence</p>
+              </div>
+            </div>
+
+            <div class="project-item reveal-element" data-category="animation">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/P7BhozIIyWs?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Animation</span>
+                <h3>Portal Cutscene</h3>
+                <p>Dramatic portal animation sequence</p>
+              </div>
+            </div>
+
+            <div class="project-item reveal-element" data-category="animation">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/RkOw3fhZ2Bk?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Animation</span>
+                <h3>Combat Combo</h3>
+                <p>Fluid combo animation system</p>
+              </div>
+            </div>
+
+            <div class="project-item reveal-element" data-category="animation">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/EDIo2uMFXSQ?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Animation</span>
+                <h3>Victory Pose</h3>
+                <p>Character victory animation</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <h4 class="centered-title">Works</h4>
-        <div class="carousel">
-          <button class="carousel-btn left">&#10094;</button>
-          <div class="carousel-track">
-              <div class="carousel-item">
-               <iframe width="100%" height="360" src="https://www.youtube.com/embed/VqFoyENk_cQ?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-               <p>Skill Scripting</p>
+        <div class="category-section" data-category="scripting">
+          <div class="skills-grid">
+            <div class="skill-card">
+              <h4>Scripting Skills</h4>
+              <ul class="skill-list">
+                <li>Server-Client Architecture</li>
+                <li>DataStore Systems</li>
+                <li>GUI Animations</li>
+                <li>Combat Systems</li>
+                <li>Simulator Systems</li>
+                <li>Discord Integration</li>
+              </ul>
             </div>
-            <div class="carousel-item">
-              <iframe width="100%" height="360" src="https://www.youtube.com/embed/RoZt_0fe7ZQ?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-              <p>Menu Scripting + Menu Animation + Store & Inventory System</p>
+            <div class="skill-card decline">
+              <h4>Not Available</h4>
+              <ul class="skill-list">
+                <li>Vehicle Systems</li>
+                <li>Weapon Systems</li>
+              </ul>
             </div>
-            <div class="carousel-item">
-              <iframe width="100%" height="360" src="https://www.youtube.com/embed/ZWLWcXi4Vfc?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-              <p>Full Combat System</p>
-            </div>
-            <div class="carousel-item">
-              <iframe width="100%" height="360" src="https://www.youtube.com/embed/ELPhTGJIBig?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-              <p>Natural Disasters System</p>
-            </div>
-            <div class="carousel-item">
-              <iframe width="100%" height="360" src="https://www.youtube.com/embed/2_QGNG_yz0g?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-              <p>Menu Scripting + Menu Animation + Customization System</p>
-            </div>          
           </div>
-          <button class="carousel-btn right">&#10095;</button>
+
+          <div class="projects-showcase">
+            <div class="project-item">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/VqFoyENk_cQ?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Scripting</span>
+                <h3>Skill System</h3>
+                <p>Advanced skill scripting with visual effects</p>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/RoZt_0fe7ZQ?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Scripting</span>
+                <h3>Menu & Store System</h3>
+                <p>Complete menu scripting with inventory management</p>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/ZWLWcXi4Vfc?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Scripting</span>
+                <h3>Combat System</h3>
+                <p>Full-featured combat mechanics</p>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/ELPhTGJIBig?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Scripting</span>
+                <h3>Natural Disasters</h3>
+                <p>Dynamic disaster system with real-time events</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="category-section" data-category="animation">
+          <div class="skills-grid">
+            <div class="skill-card">
+              <h4>Animation Skills</h4>
+              <ul class="skill-list">
+                <li>Cutscenes</li>
+                <li>Rig Animations</li>
+                <li>Combat Sequences</li>
+                <li>Character Movements</li>
+              </ul>
+            </div>
+            <div class="skill-card decline">
+              <h4>Not Available</h4>
+              <ul class="skill-list">
+                <li>Custom Rig Animations</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="projects-showcase">
+            <div class="project-item">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/66AJYpNXmq4?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Animation</span>
+                <h3>Fight Cutscene</h3>
+                <p>Cinematic combat sequence</p>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/P7BhozIIyWs?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Animation</span>
+                <h3>Portal Cutscene</h3>
+                <p>Dramatic portal animation sequence</p>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/RkOw3fhZ2Bk?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Animation</span>
+                <h3>Combat Combo</h3>
+                <p>Fluid combo animation system</p>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-video">
+                <iframe src="https://www.youtube.com/embed/EDIo2uMFXSQ?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+              <div class="project-info">
+                <span class="project-tag">Animation</span>
+                <h3>Victory Pose</h3>
+                <p>Character victory animation</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="tab-content" id="animation">
-        <h3>Animation</h3>
-
-        <div class="two-cols">
-          <div>
-            <h4>What I Can Do</h4>
-            <ul>
-              <li>Cutscenes</li>
-              <li>Rig Animations</li>
-            </ul>
-          </div>
-          <div>
-            <h4>What I Don't Do</h4>
-            <ul>
-              <li>Custom Rig Animations</li>
-            </ul>
-          </div>
-        </div>
-
-    <h4 class="centered-title">Works</h4>
-<div class="carousel">
-  <button class="carousel-btn left">&#10094;</button>
-  <div class="carousel-track">
-
-    <div class="carousel-item">
-      <iframe width="100%" height="360" 
-        src="https://www.youtube.com/embed/66AJYpNXmq4?rel=0&modestbranding=1" 
-        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-      </iframe>
-      <p>Fight Cutscene</p>
-    </div>
-
-    <div class="carousel-item">
-      <iframe width="100%" height="360" src="https://www.youtube.com/embed/EDIo2uMFXSQ?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      <p>Victory Pose</p>
-    </div>
-    <div class="carousel-item">
-      <iframe width="100%" height="360"
-        src="https://www.youtube.com/embed/P7BhozIIyWs?rel=0&modestbranding=1"
-        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-      </iframe>
-      <p>Portal Cutscene</p>
-    </div>
-    <div class="carousel-item">
-      <iframe width="100%" height="360" src="https://www.youtube.com/embed/RkOw3fhZ2Bk?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      <p>Combat Combo</p>
-    </div>
-    <div class="carousel-item">
-      <iframe width="100%" height="360" src="https://www.youtube.com/embed/VqFoyENk_cQ?rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      <p>Skill Animation</p>
-    </div>
-  </div>
-  <button class="carousel-btn right">&#10095;</button>
-</div>
-
-      </div>
-
     </div>
   </section>
 
-  <section class="screen" id="contact">
-    <div class="centered fade-in">
-      <h2>Contact</h2>
-      <p>Feel free to reach out via Discord: <strong>andrespvf</strong></p>
-      <p>Or email me at: <strong>andrespvf.creator@gmail.com</strong></p>
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's Work Together</h2>
+        <p class="section-description">
+          Ready to bring your Roblox project to life? Let's connect!
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card reveal-element">
+          <div class="contact-icon">💬</div>
+          <h3>Discord</h3>
+          <p class="contact-value">andrespvf</p>
+          <p class="contact-description">Best way to reach me instantly</p>
+        </div>
+        <div class="contact-card reveal-element">
+          <div class="contact-icon">✉️</div>
+          <h3>Email</h3>
+          <p class="contact-value">andrespvf.creator@gmail.com</p>
+          <p class="contact-description">For business inquiries</p>
+        </div>
+      </div>
+
+      <div class="cta-section reveal-element">
+        <h3>Ready to start your project?</h3>
+        <p>I'm available for freelance work and collaborations</p>
+        <a href="https://discord.com" class="btn btn-primary">Contact Me Now</a>
+      </div>
+      </div>
     </div>
   </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 AndresPVF. All rights reserved.</p>
+      <p>Roblox Scripter & Animator</p>
+    </div>
+  </footer>
+
+  <button class="scroll-to-top" id="scrollToTop">↑</button>
 
   <script src="script.js"></script>
 </body>
 </html>
-

@@ -2,372 +2,269 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AndresPVF - Roblox Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AndresPVF — Roblox Developer & Animator</title>
+  <meta name="description" content="AndresPVF — Roblox developer specialising in advanced Luau scripting and cinematic animation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portfolio/style.css?v=7">
 </head>
 <body>
 
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <div class="nav-brand">
-        <span class="brand-text">AndresPVF</span>
-        <span class="brand-line"></span>
-      </div>
-      <div class="nav-links" id="navLinks">
-        <a href="#hero"><span>01</span> Home</a>
-        <a href="#work"><span>02</span> Work</a>
-        <a href="#services"><span>03</span> Services</a>
-        <a href="#contact"><span>04</span> Contact</a>
-      </div>
-      <div class="nav-burger" id="navBurger">
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </nav>
+  <header class="seq" id="hero" data-screen-label="Hero">
+    <canvas class="seq-canvas" id="seqCanvas"></canvas>
+    <div class="seq-vignette"></div>
 
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <div class="grid-lines"></div>
-    </div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-tags">
-          <span class="tag">Roblox Developer</span>
-          <span class="tag">4+ Years Experience</span>
-        </div>
-        <h1 class="hero-title">
-          <span class="title-line">Creating</span>
-          <span class="title-line" id="dynamicWord">Powerful</span>
-          <span class="cycling-word" id="cyclingWord">Experiences</span>
-        </h1>
-        <p class="hero-description">
-          Specialized in advanced Luau scripting and cinematic animations.
-          Transforming concepts into polished, high-performance Roblox systems.
-        </p>
-        <div class="hero-cta">
-          <a href="#work" class="btn btn-primary">
-            <span>Explore Work</span>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </a>
-          <a href="#contact" class="btn btn-outline">
-            <span>Get in Touch</span>
-          </a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat-box">
-            <span class="stat-num">15+</span>
-            <span class="stat-label">Projects</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num">50+</span>
-            <span class="stat-label">Clients</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num">80K+</span>
-            <span class="stat-label">Lines of Code</span>
+    <div class="seq-overlay">
+      <div class="container">
+        <div class="hero-copy" id="heroCopy">
+          <span class="eyebrow" data-rv>Portfolio</span>
+          <h1 class="hero-title">
+            <span class="ln"><span data-rv>Andres</span></span>
+            <span class="ln"><span data-rv>PVF</span></span>
+          </h1>
+          <p class="hero-desc" data-rv>Roblox developer &amp; animator — <b>Luau</b> systems, combat, and cinematic motion built to feel alive.</p>
+          <div class="hero-cta" data-rv>
+            <a href="#work" class="btn btn-primary">
+              <span>Explore work</span>
+              <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </a>
+            <a href="#contact" class="btn btn-ghost"><span>Get in touch</span></a>
           </div>
         </div>
       </div>
     </div>
-    <div class="scroll-indicator">
+
+    <button class="seq-down" id="seqDown" aria-label="Play the intro">
+      <span class="ring"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+    </button>
 
-  <section class="work" id="work">
+    <div class="seq-loader" id="seqLoader">
+      <span class="mark"></span>
+      <span class="track"><i></i></span>
+      <span class="pct" id="seqPct">Loading</span>
+    </div>
+  </header>
+
+   <section class="section bordered" id="work" data-screen-label="Work">
     <div class="container">
-      <div class="section-header">
-        <div class="section-number">02</div>
-        <h2 class="section-title">Selected Work</h2>
-        <p class="section-subtitle">A showcase of recent projects demonstrating technical expertise and creative vision</p>
-        <div class="work-filters">
-          <button class="filter-btn active" data-filter="all">
-            <span>All Works</span>
-            <span class="filter-count">6</span>
-          </button>
-          <button class="filter-btn" data-filter="scripting">
-            <span>Scripting</span>
-            <span class="filter-count">4</span>
-          </button>
-          <button class="filter-btn" data-filter="animation">
-            <span>Animation</span>
-            <span class="filter-count">2</span>
-          </button>
+      <div class="section-head reveal">
+        <span class="eyebrow">01 — Selected work</span>
+        <h2>Systems &amp; sequences I've built.</h2>
+        <p>A cross-section of recent Roblox projects — gameplay scripting and cinematic animation. Hover a card and hit play.</p>
+        <div class="work-filters" id="workFilters">
+          <button class="filter-btn active" data-filter="all"><span>All</span><span class="ct">07</span></button>
+          <button class="filter-btn" data-filter="scripting"><span>Scripting</span><span class="ct">05</span></button>
+          <button class="filter-btn" data-filter="animation"><span>Animation</span><span class="ct">02</span></button>
         </div>
       </div>
 
       <div class="work-grid" id="workGrid">
-        <!-- ITEM 01 - Skill System -->
-        <div class="work-item" data-category="scripting">
-          <div class="work-number">01</div>
+        <article class="work-card reveal" data-category="scripting">
           <div class="work-media">
-            <div class="video-wrapper">
-              <video controls preload="none" loading="lazy"
-                     poster="https://res.cloudinary.com/dtrq8eogh/video/upload/so_2,w_1000,q_auto,f_jpg/v1769471466/Skill_-_AndresPVF_1080p_h264_psoktp.jpg">
-                <source src="https://res.cloudinary.com/dtrq8eogh/video/upload/q_auto,f_auto/v1769471466/Skill_-_AndresPVF_1080p_h264_psoktp.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            <span class="work-num">01</span>
+            <iframe src="https://player.vimeo.com/video/1196486718?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Beat-Sync FX Engine"></iframe>
           </div>
           <div class="work-info">
-            <div class="work-meta">
-              <span class="work-tag">Scripting</span>
-              <span class="work-year">2025</span>
-            </div>
+            <div class="work-meta"><span class="work-tag">Scripting</span><span class="work-year">2025</span></div>
+            <h3>Beat-Sync FX Engine</h3>
+            <p>A modular VFX system that locks effects to the beat of any sound — real-time audio analysis drives spawns, pulses and color shifts perfectly on rhythm.</p>
+            <div class="work-stack"><span>Luau</span><span>Audio analysis</span><span>VFX</span></div>
+          </div>
+        </article>
+        <article class="work-card reveal" data-category="scripting">
+          <div class="work-media">
+            <span class="work-num">02</span>
+            <video controls preload="none" playsinline
+              poster="https://res.cloudinary.com/dtrq8eogh/video/upload/so_2,w_1000,q_auto,f_jpg/v1769471466/Skill_-_AndresPVF_1080p_h264_psoktp.jpg">
+              <source src="https://res.cloudinary.com/dtrq8eogh/video/upload/q_auto,f_auto/v1769471466/Skill_-_AndresPVF_1080p_h264_psoktp.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="work-info">
+            <div class="work-meta"><span class="work-tag">Scripting</span><span class="work-year">2025</span></div>
             <h3>Skill System</h3>
-            <p>Advanced skill scripting with visual effects and smooth animations</p>
+            <p>Advanced ability framework with VFX, cooldowns and server-validated casts.</p>
+            <div class="work-stack"><span>Luau</span><span>VFX</span><span>RemoteEvents</span></div>
           </div>
-        </div>
-
-        <!-- ITEM 02 - Menu & Store System -->
-        <div class="work-item" data-category="scripting">
-          <div class="work-number">02</div>
+        </article>
+        <article class="work-card reveal" data-category="scripting">
           <div class="work-media">
-            <div class="video-wrapper">
-              <video controls preload="none" loading="lazy"
-                     poster="https://res.cloudinary.com/dtrq8eogh/video/upload/so_2,w_1000,q_auto,f_jpg/v1769471697/Menu_-_AndresPVF_1080p_h264_s1gmwu.jpg">
-                <source src="https://res.cloudinary.com/dtrq8eogh/video/upload/q_auto,f_auto/v1769471697/Menu_-_AndresPVF_1080p_h264_s1gmwu.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            <span class="work-num">03</span>
+            <video controls preload="none" playsinline
+              poster="https://res.cloudinary.com/dtrq8eogh/video/upload/so_2,w_1000,q_auto,f_jpg/v1769471697/Menu_-_AndresPVF_1080p_h264_s1gmwu.jpg">
+              <source src="https://res.cloudinary.com/dtrq8eogh/video/upload/q_auto,f_auto/v1769471697/Menu_-_AndresPVF_1080p_h264_s1gmwu.mp4" type="video/mp4">
+            </video>
           </div>
           <div class="work-info">
-            <div class="work-meta">
-              <span class="work-tag">Scripting</span>
-              <span class="work-year">2025</span>
-            </div>
-            <h3>Menu & Store System</h3>
-            <p>Complete menu scripting with inventory management</p>
+            <div class="work-meta"><span class="work-tag">Scripting</span><span class="work-year">2025</span></div>
+            <h3>Menu &amp; Store System</h3>
+            <p>Complete shop and inventory flow with persistent data and clean UI states.</p>
+            <div class="work-stack"><span>Luau</span><span>DataStore</span><span>GUI</span></div>
           </div>
-        </div>
-
-        <!-- ITEM 03 - Combat System -->
-        <div class="work-item" data-category="scripting">
-          <div class="work-number">03</div>
+        </article>
+        <article class="work-card reveal" data-category="scripting">
           <div class="work-media">
-            <div class="video-wrapper">
-              <video controls preload="none" loading="lazy"
-                     poster="https://res.cloudinary.com/dtrq8eogh/video/upload/so_2,w_1000,q_auto,f_jpg/v1769471775/Combat_-_AndresPVF_1080p_h264_fikcla.jpg">
-                <source src="https://res.cloudinary.com/dtrq8eogh/video/upload/q_auto,f_auto/v1769471775/Combat_-_AndresPVF_1080p_h264_fikcla.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            <span class="work-num">04</span>
+            <video controls preload="none" playsinline
+              poster="https://res.cloudinary.com/dtrq8eogh/video/upload/so_2,w_1000,q_auto,f_jpg/v1769471775/Combat_-_AndresPVF_1080p_h264_fikcla.jpg">
+              <source src="https://res.cloudinary.com/dtrq8eogh/video/upload/q_auto,f_auto/v1769471775/Combat_-_AndresPVF_1080p_h264_fikcla.mp4" type="video/mp4">
+            </video>
           </div>
           <div class="work-info">
-            <div class="work-meta">
-              <span class="work-tag">Scripting</span>
-              <span class="work-year">2025</span>
-            </div>
+            <div class="work-meta"><span class="work-tag">Scripting</span><span class="work-year">2025</span></div>
             <h3>Combat System</h3>
-            <p>Full-featured combat mechanics with hitbox detection</p>
+            <p>Full melee combat with server-side hitbox detection and hit reactions.</p>
+            <div class="work-stack"><span>Luau</span><span>Hitbox</span><span>Anti-exploit</span></div>
           </div>
-        </div>
-
-        <!-- ITEM 04 - Natural Disasters -->
-        <div class="work-item" data-category="scripting">
-          <div class="work-number">04</div>
+        </article>
+        <article class="work-card reveal" data-category="scripting">
           <div class="work-media">
-            <div class="video-wrapper">
-              <video controls preload="none" loading="lazy"
-                     poster="https://res.cloudinary.com/dtrq8eogh/video/upload/so_2,w_1000,q_auto,f_jpg/v1769471864/Natural_-_AndresPVF_1080p_h264_rzjwrl.jpg">
-                <source src="https://res.cloudinary.com/dtrq8eogh/video/upload/q_auto,f_auto/v1769471864/Natural_-_AndresPVF_1080p_h264_rzjwrl.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            <span class="work-num">05</span>
+            <video controls preload="none" playsinline
+              poster="https://res.cloudinary.com/dtrq8eogh/video/upload/so_2,w_1000,q_auto,f_jpg/v1769471864/Natural_-_AndresPVF_1080p_h264_rzjwrl.jpg">
+              <source src="https://res.cloudinary.com/dtrq8eogh/video/upload/q_auto,f_auto/v1769471864/Natural_-_AndresPVF_1080p_h264_rzjwrl.mp4" type="video/mp4">
+            </video>
           </div>
           <div class="work-info">
-            <div class="work-meta">
-              <span class="work-tag">Scripting</span>
-              <span class="work-year">2025</span>
-            </div>
+            <div class="work-meta"><span class="work-tag">Scripting</span><span class="work-year">2025</span></div>
             <h3>Natural Disasters</h3>
-            <p>Dynamic disaster system with real-time events</p>
+            <p>Round-based disaster events with dynamic spawning and live state sync.</p>
+            <div class="work-stack"><span>Luau</span><span>Round system</span><span>Events</span></div>
           </div>
-        </div>
-
-        <!-- ITEM 05 - Fight Cutscene -->
-        <div class="work-item" data-category="animation">
-          <div class="work-number">05</div>
+        </article>
+        <article class="work-card reveal" data-category="animation">
           <div class="work-media">
-            <div class="video-wrapper">
-              <video controls preload="none" loading="lazy"
-                     poster="https://res.cloudinary.com/dtrq8eogh/video/upload/so_2,w_1000,q_auto,f_jpg/v1769471917/FightCutscene_-_AndresPVF_1080p_h264_evxlni.jpg">
-                <source src="https://res.cloudinary.com/dtrq8eogh/video/upload/q_auto,f_auto/v1769471917/FightCutscene_-_AndresPVF_1080p_h264_evxlni.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            <span class="work-num">06</span>
+            <video controls preload="none" playsinline
+              poster="https://res.cloudinary.com/dtrq8eogh/video/upload/so_2,w_1000,q_auto,f_jpg/v1769471917/FightCutscene_-_AndresPVF_1080p_h264_evxlni.jpg">
+              <source src="https://res.cloudinary.com/dtrq8eogh/video/upload/q_auto,f_auto/v1769471917/FightCutscene_-_AndresPVF_1080p_h264_evxlni.mp4" type="video/mp4">
+            </video>
           </div>
           <div class="work-info">
-            <div class="work-meta">
-              <span class="work-tag">Animation</span>
-              <span class="work-year">2025</span>
-            </div>
+            <div class="work-meta"><span class="work-tag">Animation</span><span class="work-year">2025</span></div>
             <h3>Fight Cutscene</h3>
-            <p>Cinematic combat sequence with dynamic camera work</p>
+            <p>Choreographed combat sequence with dynamic camera and impact timing.</p>
+            <div class="work-stack"><span>Rigs</span><span>Camera</span><span>Keyframes</span></div>
           </div>
-        </div>
-
-        <!-- ITEM 06 - Portal Cutscene -->
-        <div class="work-item" data-category="animation">
-          <div class="work-number">06</div>
+        </article>
+        <article class="work-card reveal" data-category="animation">
           <div class="work-media">
-            <div class="video-wrapper">
-              <video controls preload="none" loading="lazy"
-                     poster="https://res.cloudinary.com/dtrq8eogh/video/upload/so_2,w_1000,q_auto,f_jpg/v1769471968/Portal_-_AndresPVF_1080p_h264_zpofqw.jpg">
-                <source src="https://res.cloudinary.com/dtrq8eogh/video/upload/q_auto,f_auto/v1769471968/Portal_-_AndresPVF_1080p_h264_zpofqw.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            <span class="work-num">07</span>
+            <video controls preload="none" playsinline
+              poster="https://res.cloudinary.com/dtrq8eogh/video/upload/so_2,w_1000,q_auto,f_jpg/v1769471968/Portal_-_AndresPVF_1080p_h264_zpofqw.jpg">
+              <source src="https://res.cloudinary.com/dtrq8eogh/video/upload/q_auto,f_auto/v1769471968/Portal_-_AndresPVF_1080p_h264_zpofqw.mp4" type="video/mp4">
+            </video>
           </div>
           <div class="work-info">
-            <div class="work-meta">
-              <span class="work-tag">Animation</span>
-              <span class="work-year">2025</span>
-            </div>
+            <div class="work-meta"><span class="work-tag">Animation</span><span class="work-year">2025</span></div>
             <h3>Portal Cutscene</h3>
-            <p>Dramatic portal animation sequence</p>
+            <p>Dramatic portal reveal with layered VFX and easing-driven motion.</p>
+            <div class="work-stack"><span>VFX</span><span>Easing</span><span>Camera</span></div>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="services" id="services">
+  <section class="section bordered" id="services" data-screen-label="Services">
     <div class="container">
-      <div class="section-header">
-        <div class="section-number">03</div>
-        <h2 class="section-title">Services & Expertise</h2>
-        <p class="section-subtitle">Comprehensive development solutions for Roblox experiences</p>
+      <div class="section-head reveal">
+        <span class="eyebrow">02 — Services</span>
+        <h2>What I can build for your game.</h2>
+        <p>End-to-end Roblox development — from systems architecture to the cinematic moments players remember.</p>
       </div>
 
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <rect x="5" y="5" width="30" height="30" stroke="currentColor" stroke-width="2"/>
-              <path d="M15 20L18 23L25 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+      <div class="svc-grid">
+        <div class="svc-card reveal">
+          <div class="svc-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M8 7l-4 5 4 5M16 7l4 5-4 5M13 4l-2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Scripting Systems</h3>
+          <h3>Scripting systems</h3>
           <ul>
-            <li>Server-Client Architecture</li>
-            <li>DataStore Systems</li>
-            <li>Combat Mechanics</li>
-            <li>Simulator Systems</li>
-            <li>GUI Development</li>
-            <li>Discord Integration</li>
+            <li>Server / client architecture</li>
+            <li>Combat &amp; ability mechanics</li>
+            <li>DataStore &amp; save systems</li>
+            <li>Simulator &amp; economy loops</li>
+            <li>GUI / UX engineering</li>
+            <li>Discord &amp; web integration</li>
           </ul>
         </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <circle cx="20" cy="20" r="15" stroke="currentColor" stroke-width="2"/>
-              <path d="M20 12V20L26 23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+        <div class="svc-card reveal">
+          <div class="svc-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 3v18l5-3 4 3 5-3V3l-5 3-4-3-5 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Animation</h3>
+          <h3>Animation &amp; cinematics</h3>
           <ul>
-            <li>Cinematic Cutscenes</li>
-            <li>Character Animations</li>
-            <li>Combat Sequences</li>
-            <li>Environmental Effects</li>
-            <li>Camera Movement</li>
+            <li>Cinematic cutscenes</li>
+            <li>Character rigs &amp; keyframes</li>
+            <li>Combat &amp; ability sequences</li>
+            <li>Dynamic camera work</li>
+            <li>Environmental &amp; VFX motion</li>
           </ul>
         </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <path d="M10 20H30M20 10V30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="20" cy="20" r="3" fill="currentColor"/>
-            </svg>
+        <div class="svc-card reveal">
+          <div class="svc-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21h8M12 18v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <h3>Tools & Tech</h3>
+          <h3>Tools &amp; pipeline</h3>
           <ul>
-            <li>Luau (Roblox)</li>
-            <li>Roblox Studio</li>
-            <li>VS Code</li>
-            <li>Blender</li>
-            <li>Git Version Control</li>
+            <li>Roblox Studio &amp; Luau</li>
+            <li>Rojo + VS Code workflow</li>
+            <li>Blender for rigs &amp; assets</li>
+            <li>Git version control</li>
+            <li>Performance profiling</li>
           </ul>
         </div>
       </div>
 
-      <div class="availability-banner">
-        <div class="banner-content">
-          <span class="availability-status">Available for Projects</span>
-          <p>Currently accepting freelance work and collaborations</p>
-        </div>
-        <a href="#contact" class="btn btn-outline">Start a Project</a>
-      </div>
     </div>
   </section>
 
-  <section class="contact" id="contact">
+  <section class="section bordered" id="contact" data-screen-label="Contact">
     <div class="container">
-      <div class="section-header">
-        <div class="section-number">04</div>
-        <h2 class="section-title">Let's Work Together</h2>
-        <p class="section-subtitle">Ready to bring your Roblox vision to life? Get in touch</p>
+      <div class="section-head contact-head reveal">
+        <span class="eyebrow">03 — Contact</span>
+        <h2>Let's build something players can't put down.</h2>
+        <p>Freelance commissions and collaborations are open — reach out and I'll get back within 24 hours.</p>
       </div>
-
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="card-header">
-            <h3>Email</h3>
-            <span class="card-number">01</span>
-          </div>
-          <a href="mailto:andrespvf.creator@gmail.com" class="contact-link">
-            andrespvf.creator@gmail.com
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </a>
-        </div>
-
-        <div class="contact-card">
-          <div class="card-header">
-            <h3>Discord</h3>
-            <span class="card-number">02</span>
-          </div>
-          <a href="https://discord.com" class="contact-link">
-            andrespvf
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </a>
-        </div>
+      <div class="contact-links reveal">
+        <a class="contact-link" href="/cdn-cgi/l/email-protection#c4a5aaa0b6a1b7b4b2a2eaa7b6a1a5b0abb684a3a9a5ada8eaa7aba9" data-copy="andrespvf.creator@gmail.com">
+          <span><span class="ttl">Email</span><span class="val"><span class="__cf_email__" data-cfemail="f7969993859284878191d994859296839885b7909a969e9bd994989a">  andrespvf.creator@gmail.com</span></span></span>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+        <a class="contact-link" href="#" data-copy="andrespvf">
+          <span><span class="ttl">Discord</span><span class="val">  andrespvf</span></span>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
+      <div class="footer-top">
         <div class="footer-brand">
-          <h4>AndresPVF</h4>
-          <p>Roblox Developer & Animator</p>
+          <span class="lg"><span class="brand-cube"></span> AndresPVF</span>
+          <p>Roblox Developer &amp; Animator · Luau · Cinematics</p>
         </div>
-        <div class="footer-links">
-          <a href="#hero">Home</a>
+        <nav class="footer-nav">
           <a href="#work">Work</a>
           <a href="#services">Services</a>
           <a href="#contact">Contact</a>
-        </div>
+        </nav>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 AndresPVF. All rights reserved.</p>
+        <p>© 2026 AndresPVF. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <div class="toast" id="toast"></div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="portfolio/script.js?v=7"></script>
 </body>
 </html>

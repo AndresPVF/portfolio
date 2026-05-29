@@ -19,11 +19,10 @@ button{font-family:inherit}
 .eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
 .brand-cube{width:18px;height:18px;background:var(--accent);box-shadow:0 0 16px var(--accent-glow);transform:rotate(45deg);border-radius:3px}
 
-/* HERO — scroll-driven frame sequence */
 .seq{position:relative;height:100svh;background:#06070a;overflow:hidden}
 .seq-canvas{position:absolute;inset:0;width:100%;height:100%;background:#06070a}
 .seq-vignette{position:absolute;inset:0;pointer-events:none;opacity:0;background:linear-gradient(0deg,rgba(4,5,8,.92) 2%,rgba(4,5,8,.35) 30%,transparent 55%),linear-gradient(90deg,rgba(4,5,8,.72),rgba(4,5,8,.1) 50%,transparent 72%)}
-.seq-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding-bottom:clamp(4.5rem,13vh,9rem);z-index:3}
+.seq-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding-bottom:clamp(4.5rem,13vh,9rem);z-index:3; transform:translateY(10px);}
 .hero-copy{max-width:680px}
 .hero-copy .eyebrow{margin-bottom:1.4rem}
 .hero-title{font-family:var(--f-display);font-weight:700;font-size:clamp(3rem,9vw,7rem);line-height:.94;letter-spacing:-.03em}
@@ -31,7 +30,17 @@ button{font-family:inherit}
 .hero-desc{margin-top:1.6rem;font-size:clamp(1rem,1.4vw,1.2rem);color:var(--text-2);max-width:34em}
 .hero-desc b{color:var(--accent)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.4rem}
-
+.seq.ready .seq-overlay,
+.seq.ready .seq-vignette,
+.seq.ready .seq-down{
+  opacity:1;
+  transform:none;
+}
+#heroCopy,
+#seqDown{
+  opacity:0;
+  transition:opacity .45s ease;
+}
 .seq-loader{position:absolute;inset:0;z-index:20;background:#06070a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;transition:opacity .6s var(--ease)}
 .seq-loader.done{opacity:0;pointer-events:none}
 .seq-loader .mark{width:26px;height:26px;background:var(--accent);box-shadow:0 0 24px var(--accent-glow);transform:rotate(45deg);border-radius:5px;animation:pulse 1.6s infinite}
@@ -40,7 +49,16 @@ button{font-family:inherit}
 @keyframes slide{0%{transform:translateX(-120%)}100%{transform:translateX(360%)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .seq-loader .pct{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
-
+.seq-canvas{
+  transform:translateZ(0);
+  will-change:transform;
+  backface-visibility:hidden;
+  opacity:0;
+  transition:opacity .35s ease;
+}
+.seq-canvas.ready{
+  opacity:1;
+}
 .seq-down{
   position:absolute;
   bottom:2.2rem;
@@ -73,7 +91,7 @@ button{font-family:inherit}
   font-size:.82rem;
   letter-spacing:.24em;
   text-transform:uppercase;
-
+ opacity:0;
   transition:
     opacity .4s var(--ease),
     transform .25s var(--ease),

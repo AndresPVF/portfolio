@@ -54,12 +54,10 @@
     copyText(el.getAttribute('data-copy'), () => showToast('✓ Copied: ' + el.getAttribute('data-copy')));
   }));
 
-  const SEQ = { dir: 'frames/', prefix: 'frame_', pad: 4, exts: ['jpg', 'jpeg', 'png', 'webp'], max: 600 };
+  const SEQ = { dir: 'frames/', prefix: 'frame_', pad: 4, exts: ['jpg', 'jpeg', 'png', 'webp'], max: 59 };
 
   const canvas = document.getElementById('seqCanvas');
   const ctx = canvas.getContext('2d');
-  const loader = document.getElementById('seqLoader');
-  const pct = document.getElementById('seqPct');
   const down = document.getElementById('seqDown');
   const vignette = document.querySelector('.seq-vignette');
   const hero = document.getElementById('hero');
@@ -68,7 +66,7 @@
   const eyebrow = heroCopy.querySelector('.eyebrow[data-rv]');
   const desc = heroCopy.querySelector('.hero-desc');
   const cta = heroCopy.querySelector('.hero-cta');
-
+  heroCopy.style.opacity = '0';
   let frames = [];
   let cur = -1;
   let frameFrac = 0.7;
@@ -76,8 +74,19 @@
 
   function pad(n) { return SEQ.pad > 0 ? String(n).padStart(SEQ.pad, '0') : String(n); }
   function url(i, ext) { return SEQ.dir + SEQ.prefix + pad(i) + '.' + ext; }
-  function loadImg(src) { return new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = src; }); }
+function loadImg(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
 
+    img.decoding = 'async';
+
+    img.onload = () => resolve(img);
+
+    img.onerror = reject;
+
+    img.src = src;
+  });
+}
   function resize() {
     const dpr = Math.min(devicePixelRatio || 1, 1.5);
     const w = canvas.clientWidth, h = canvas.clientHeight;
@@ -97,12 +106,17 @@
     ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
   }
 
-  function draw(i) { if (frames[i]) drawCover(frames[i]); }
+function draw(i) {
+  if (!frames[i]) return;
 
+  drawCover(frames[i]);
+}
   function placeholder() {
     const cw = canvas.clientWidth, ch = canvas.clientHeight;
     ctx.clearRect(0, 0, cw, ch);
-    ctx.fillStyle = '#0c0e13'; ctx.fillRect(0, 0, cw, ch);
+    
+     ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, cw, ch);
     ctx.strokeStyle = 'rgba(255,255,255,.045)'; ctx.lineWidth = 2;
     for (let x = -ch; x < cw; x += 30) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + ch, ch); ctx.stroke(); }
     ctx.fillStyle = '#ff3b3b'; ctx.textAlign = 'center';
@@ -117,18 +131,30 @@
     return null;
   }
 
-  async function loadAll() {
-    const d = await detect();
-    if (!d) return [];
-    const imgs = [d.first];
-    pct.textContent = 'Loading 1';
-    for (let i = 2; i <= SEQ.max; i++) {
-      try { imgs.push(await loadImg(url(i, d.ext))); pct.textContent = 'Loading ' + i; } catch (e) { break; }
-    }
-    return imgs;
+async function loadAll() {
+  const d = await detect();
+
+  if (!d) return 0;
+
+  frames = [];
+
+  frames[0] = d.first;
+
+  draw(0);
+
+  let loaded = 1;
+
+  for (let i = 2; i <= SEQ.max; i++) {
+    loadImg(url(i, d.ext))
+      .then(img => {
+        frames[i - 1] = img;
+        loaded++;
+      })
+      .catch(() => {});
   }
 
-  function loaderDone() { loader.classList.add('done'); }
+  return loaded;
+}
 
   function showText() {
     gsap.set([eyebrow, desc, cta], { opacity: 1, y: 0 });
@@ -137,7 +163,7 @@
   }
 
   function setupScroll() {
-    const last = frames.length - 1;
+   const last = SEQ.max - 1;
     const state = { f: 0 };
     const vh = innerHeight;
     const framesDur = Math.max(vh * 1.1, frames.length * 14);
@@ -159,7 +185,21 @@
         }
       }
     });
-    tl.to(state, { f: last, ease: 'none', duration: framesDur, onUpdate: () => { const i = Math.round(state.f); if (i !== cur) { cur = i; draw(i); } } }, 0);
+    tl.to(state, { f: last, ease: 'none', duration: framesDur, onUpdate: () => { const i = Math.round(state.f); if (i !== cur) {
+  cur = i;
+
+ if (frames[i]) {
+  draw(i);
+} else {
+  let back = i;
+
+  while (back >= 0 && !frames[back]) {
+    back--;
+  }
+
+  if (back >= 0) draw(back);
+}
+} } }, 0);
     tl.to(vignette, { opacity: 0.9, ease: 'none', duration: framesDur * 0.32 }, framesDur * 0.30);
     tl.to(eyebrow, { opacity: 1, y: 0, duration: framesDur * 0.12 }, framesDur * 0.30);
     tl.to(titleSpans, { yPercent: 0, opacity: 1, stagger: framesDur * 0.05, duration: framesDur * 0.18 }, framesDur * 0.40);
@@ -196,17 +236,46 @@
     rT = requestAnimationFrame(() => { rT = 0; if (hasST) ScrollTrigger.refresh(); fit(); });
   }, { passive: true });
 
-  async function start() {
-    resize();
+async function start() {
+  resize();
+
+  const d = await detect();
+
+  if (!d) {
     placeholder();
-    frames = await loadAll();
-    if (!frames.length) { loaderDone(); return; }
-    cur = 0; draw(0);
-    if (reduce || frames.length < 2 || !hasST) { cur = frames.length - 1; draw(cur); showText(); loaderDone(); return; }
-    loaderDone();
-    setupScroll();
-    ScrollTrigger.refresh();
+    return;
   }
+
+  frames = [];
+  frames[0] = d.first;
+
+  draw(0);
+
+requestAnimationFrame(() => {
+  canvas.classList.add('ready');
+  hero.classList.add('ready');
+
+  heroCopy.style.opacity = '1';
+  down.style.opacity = '1';
+});
+
+  for (let i = 2; i <= SEQ.max; i++) {
+    loadImg(url(i, d.ext))
+      .then(img => {
+        frames[i - 1] = img;
+      })
+      .catch(() => {});
+  }
+
+  if (reduce || !hasST) {
+    showText();
+    return;
+  }
+
+  setupScroll();
+
+  ScrollTrigger.refresh();
+}
 
   start();
 })();
